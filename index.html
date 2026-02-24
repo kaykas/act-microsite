@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A.C.T. San Francisco 2025–26 Season - Find Yourself in the Story">
+    <title>A.C.T. San Francisco · 2025–26 Season</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-bg: #0a0a0a;
+            --color-text: #f5f0e8;
+            --color-gold: #c9a84c;
+            --color-card: #1a1a1a;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .fade-in-delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .fade-in-delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .fade-in-delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(201, 168, 76, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subhead {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            font-weight: 300;
+            color: var(--color-gold);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Heading */
+        .section-heading {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        /* Season Strip */
+        .season-strip {
+            padding: 6rem 2rem;
+            background-color: var(--color-bg);
+        }
+
+        .shows-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .show-card {
+            background-color: var(--color-card);
+            border-top: 3px solid var(--color-gold);
+            padding: 2.5rem 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .show-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(201, 168, 76, 0.15);
+        }
+
+        .show-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .show-card h3 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .show-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: rgba(245, 240, 232, 0.85);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            background-color: transparent;
+            border: 2px solid var(--color-gold);
+            color: var(--color-gold);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--color-gold);
+            color: var(--color-bg);
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(180deg, var(--color-bg) 0%, rgba(201, 168, 76, 0.03) 100%);
+            padding: 6rem 2rem;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .about-stats {
+            font-family: var(--font-heading);
+            color: var(--color-gold);
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            margin-top: 2rem;
+        }
+
+        /* Conservatory Callout */
+        .conservatory {
+            background-color: var(--color-card);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(201, 168, 76, 0.2);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .conservatory-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .conservatory h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .conservatory p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: rgba(245, 240, 232, 0.85);
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            background-color: var(--color-bg);
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-link {
+            color: var(--color-gold);
+            text-decoration: none;
+            font-size: 1.25rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 1rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-link:hover {
+            opacity: 0.7;
+        }
+
+        .footer-contact {
+            font-size: 1rem;
+            color: rgba(245, 240, 232, 0.7);
+            margin-top: 0.5rem;
+        }
+
+        .footer-divider {
+            display: inline-block;
+            margin: 0 1rem;
+            color: var(--color-gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 3rem 1.5rem;
+            }
+
+            .shows-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .season-strip,
+            .about,
+            .conservatory {
+                padding: 4rem 1.5rem;
+            }
+
+            .footer-divider {
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-in">
+            <h1>Find Yourself in the Story</h1>
+            <p class="hero-subhead">A.C.T. 2025–26 Season · San Francisco</p>
+        </div>
+    </section>
+
+    <!-- Season Strip -->
+    <section class="season-strip">
+        <div class="shows-grid">
+            <article class="show-card fade-in">
+                <span class="show-tag">Comedy</span>
+                <h3>Kim's Convenience</h3>
+                <p class="show-description">A heartwarming comedy about family, identity, and the everyday magic of a corner store in Toronto.</p>
+                <a href="#tickets" class="btn">Get Tickets</a>
+            </article>
+
+            <article class="show-card fade-in fade-in-delay-1">
+                <span class="show-tag">World Premiere</span>
+                <h3>Girls · Chance · Music</h3>
+                <p class="show-description">An electrifying new work by Eisa Davis exploring ambition, sisterhood, and the power of artistic voice.</p>
+                <a href="#tickets" class="btn">Get Tickets</a>
+            </article>
+
+            <article class="show-card fade-in fade-in-delay-2">
+                <span class="show-tag">Coming Soon</span>
+                <h3>To Be Announced</h3>
+                <p class="show-description">Another extraordinary story is on its way—stay tuned for our next season announcement.</p>
+                <a href="#tickets" class="btn">Learn More</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-content fade-in">
+            <p>For 58 years, A.C.T. has been San Francisco's home for stories that provoke, move, and matter.</p>
+            <p class="about-stats">200,000 Bay Area residents · One stage · Endless possibility</p>
+        </div>
+    </section>
+
+    <!-- Conservatory Callout -->
+    <section class="conservatory fade-in">
+        <div class="conservatory-content">
+            <h2>Train with Us</h2>
+            <p>A.C.T. Conservatory programs for all ages and experience levels</p>
+            <a href="#conservatory" class="btn">Explore Programs</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content fade-in">
+            <a href="https://act-sf.org" class="footer-link">act-sf.org</a>
+            <p class="footer-contact">
+                <span class="footer-divider">·</span>
+                Box Office 415.749.2228
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements after initial load
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                if (!el.closest('.hero')) {
+                    observer.observe(el);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
